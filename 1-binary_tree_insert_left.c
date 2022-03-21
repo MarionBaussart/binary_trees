@@ -5,10 +5,10 @@
 #include <string.h>
 
 /**
- * binary_tree_node - creates a binary tree node
+ * binary_tree_insert_left - inserts a node as the right-child of another node
  * @parent: Pointer to the parent node
  * @value: Integer stored in the node
- * Return: new binary tree node, or NULL if it failed
+ * Return: pointer to the created node, or NULL on failure or if parent is NULL
  */
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
