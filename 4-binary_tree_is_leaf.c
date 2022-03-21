@@ -6,8 +6,7 @@
 
 /**
  * binary_tree_node - creates a binary tree node
- * @parent: Pointer to the parent node
- * @value: Integer stored in the node
+ * @node: Pointer to the node to check
  * Return: new binary tree node, or NULL if it failed
  */
 int binary_tree_is_leaf(const binary_tree_t *node)
