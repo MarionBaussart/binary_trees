@@ -1,9 +1,9 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_node - creates a binary tree node
+ * binary_tree_is_root - checks if a given node is a root
  * @node: Pointer to the node to check
- * Return: new binary tree node, or NULL if it failed
+ * Return: 1 if node is a root, otherwise 0
  */
 int binary_tree_is_root(const binary_tree_t *node)
 {
