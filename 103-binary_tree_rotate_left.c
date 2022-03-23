@@ -7,6 +7,7 @@
  */
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 {
+<<<<<<< HEAD
 	binary_tree_t *tmp;
 
 	if (tree)
@@ -25,4 +26,10 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 
 	}
 	return (tree);
+=======
+	Pivot = tree→CO
+	tree→CO = tree→right
+	Pivot→CR = tree
+	tree = Pivot
+>>>>>>> 78b26a67d8c289686366c31e154bb5599135b2e1
 }
