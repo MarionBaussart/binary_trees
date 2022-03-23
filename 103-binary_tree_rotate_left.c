@@ -8,7 +8,7 @@
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 {
 	Pivot = tree→CO
-	tree→CO = Pivot→CR
+	tree→CO = tree→right
 	Pivot→CR = tree
 	tree = Pivot
 }
