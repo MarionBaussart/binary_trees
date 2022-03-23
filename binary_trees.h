@@ -27,6 +27,8 @@ typedef struct binary_tree_s binary_tree_t;
 void binary_tree_print(const binary_tree_t *);
 void print_num(int n);
 int _pow_recursion(int x, int y);
+int search_max(const binary_tree_t *tree);
+int search_min(const binary_tree_t *tree);
 
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
@@ -50,5 +52,9 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second);
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
+void print_level(const binary_tree_t *node, int level, void (*func)(int));
+int binary_tree_is_complete(const binary_tree_t *tree);
+int binary_tree_is_bst(const binary_tree_t *tree);
 
 #endif
