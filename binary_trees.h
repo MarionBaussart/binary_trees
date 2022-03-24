@@ -62,9 +62,6 @@ int binary_tree_is_complete(const binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 bst_t *bst_insert(bst_t **tree, int value);
-<<<<<<< HEAD
 bst_t *bst_search(const bst_t *tree, int value);
-=======
->>>>>>> a447f11656389600a4e2b2a738aaa095f63a0c2c
 
 #endif
