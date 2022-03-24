@@ -1,81 +1,49 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_rotate_right - performs a right-rotation on a binary tree
- * @tree: Pointer to the root node of the tree to check
- * Return: tree or NULL
+ * bst_insert - function that inserts a value in a Binary Search Tree
+ * @tree: double pointer to the root node of the BST to insert the value
+ * @value: value to store in the node to be inserted
+ * Return: pointer to the created node, or NULL on failure
  */
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *tmp = (*tree);
+	bst_t *node;
 
-	if (tmp)
+	if (*tree == NULL)
 	{
-		if (value == (tmp->n))
+		*tree = binary_tree_node(NULL, value);
+		return (*tree);
+	}
+
+	node = (*tree);
+
+	while (node)
+	{
+		if (value == (node->n))
+			return (NULL);
+
+		if (value > (node->n))
 		{
-			free (tmp);
-			return (*tree);
-		}
-		if (value > (tmp->n))
-		{
-			if (tmp->right)
-			{
-				tmp = tmp->right;
-				bst_insert(&tmp, value);
-			}
+			if (node->right)
+				node = node->right;
 			else
-				return (binary_tree_insert_right(tmp, value));
-		}
-		else if (value < tmp->n)
-		{
-			if (tmp->left)
 			{
-				tmp = tmp->left;
-				bst_insert(&tmp, value);
+				node->right = binary_tree_node(node, value);
+				return (node->right);
 			}
+		}
+		else if (value < node->n)
+		{
+			if (node->left)
+				node = node->left;
 			else
-				return (binary_tree_insert_left(tmp, value));
+			{
+				node->left = binary_tree_node(node, value);
+				return (node->left);
+			}
 		}
 	}
-	return (binary_tree_node(tmp, value));
-}
 
-binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
-{
-	binary_tree_t *new;
-
-	if (parent == NULL)
-		return (NULL);
-
-	new = binary_tree_node(parent, value);
-
-	if (parent->left == NULL)
-		parent->left = new;
-	else
-	{
-		parent->left->parent = new;
-		new->left = parent->left;
-		parent->left = new;
-	}
-	return (new);
-}
-
-binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
-{
-	binary_tree_t *new;
-
-	if (parent == NULL)
-		return (NULL);
-
-	new = binary_tree_node(parent, value);
-
-	if (parent->right == NULL)
-		parent->right = new;
-	else
-	{
-		parent->right->parent = new;
-		new->right = parent->right;
-		parent->right = new;
-	}
-	return (new);
+	return (NULL);
 }
