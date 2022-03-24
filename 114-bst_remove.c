@@ -16,6 +16,7 @@ bst_t *bst_remove(bst_t *root, int value)
 	if (tree == NULL)
 	{
 		free(tree);
+		free(root);
 	}
 	if (tree && tree->right)
 	{
@@ -23,7 +24,7 @@ bst_t *bst_remove(bst_t *root, int value)
 		tree->right->left = NULL;
 		free(tree->right->left);
 	}
-	if (tree && !tree->right && tree->left)
+	if (tree && !tree->right)
 	{
 		tree->n = tree->left->n;
 		tree->left = NULL;
