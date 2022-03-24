@@ -32,6 +32,7 @@ void print_num(int n);
 int _pow_recursion(int x, int y);
 int search_max(const binary_tree_t *tree);
 int search_min(const binary_tree_t *tree);
+int is_heap(const binary_tree_t *tree);
 
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
