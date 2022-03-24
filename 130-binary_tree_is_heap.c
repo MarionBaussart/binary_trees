@@ -1,29 +1,40 @@
 #include "binary_trees.h"
+#include <stdio.h>
 
 /**
  * binary_tree_is_heap - checks if a binary tree is a valid Max Binary Heap
+ * complete tree, recursively : value parent > values childs
  * @tree: Pointer to the root node of the tree to check
- * Return: 1 if tree is a valid Max Binary Heap, and 0 otherwise
+ * Return: 1 if tree is a valid Max Binary Heap,
+ * and 0 otherwise or if tree is NULL
  */
 int binary_tree_is_heap(const binary_tree_t *tree)
 {
-	int a = 0;
+	if (tree == NULL)
+		return (0);
 
-	binary_tree_is_heap(tree->left);
-	binary_tree_is_heap(tree->right);
-	if (tree->n < tree->left->n)
-	{
-		a = binary_tree_is_complete(tree);
-		if (a == 1)
-			return (1);
-	}
-	else if (tree->n < tree->right->n)
-	{
-		a = binary_tree_is_complete(tree);
-		if (a == 1)
-			return (1);
-	}
-	return (0);
+	return (is_heap(tree));
+}
+
+/**
+ * is_heap - checks if a binary tree is a valid Max Binary Heap
+ * complete tree, recursively : value parent > values childs
+ * @tree: Pointer to the root node of the tree to check
+ * Return: 1 if tree is a valid Max Binary Heap,
+ * and 0 otherwise or if tree is NULL
+ */
+int is_heap(const binary_tree_t *tree)
+{
+	if (tree == NULL)
+		return (1);
+
+	if (!binary_tree_is_complete(tree))
+		return (0);
+
+	if (tree->parent && tree->parent->n < tree->n)
+		return (0);
+
+	return (is_heap(tree->left) && is_heap(tree->right));
 }
 
 /**
