@@ -35,6 +35,9 @@ bst_t *bst_insert(bst_t **tree, int value)
 		}
 	}
 	return (binary_tree_node(tmp, value));
+	free (tmp);
+	return (NULL);
+
 }
 
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
