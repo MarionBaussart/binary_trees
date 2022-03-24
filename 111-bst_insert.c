@@ -1,43 +1,50 @@
 #include "binary_trees.h"
+#include <stdio.h>
 
 /**
- * binary_tree_rotate_right - performs a right-rotation on a binary tree
- * @tree: Pointer to the root node of the tree to check
- * Return: tree or NULL
+ * bst_insert - function that inserts a value in a Binary Search Tree
+ * @tree: double pointer to the root node of the BST to insert the value
+ * @value: value to store in the node to be inserted
+ * Return: pointer to the created node, or NULL on failure
  */
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *tmp = (*tree);
+	bst_t *new = (*tree);
 
-	if (tmp)
+	printf("new create new->n: %d\n", new->n);
+
+	if (new)
 	{
-		if (value == (tmp->n))
+		printf("new new->n: %d\n", new->n);
+		if (value == (new->n))
 		{
-			free (tmp);
+			free (new);
 			return (*tree);
 		}
-		if (value > (tmp->n))
+		if (value > (new->n))
 		{
-			if (tmp->right)
+			if (new->right)
 			{
-				tmp = tmp->right;
-				bst_insert(&tmp, value);
+				printf("go right new->n: %d\n", new->n);
+				new = new->right;
+				bst_insert(&new, value);
 			}
 			else
-				return (binary_tree_insert_right(tmp, value));
+				return (binary_tree_insert_right(new, value));
 		}
-		else if (value < tmp->n)
+		else if (value < new->n)
 		{
-			if (tmp->left)
+			if (new->left)
 			{
-				tmp = tmp->left;
-				bst_insert(&tmp, value);
+				printf("go left new->n: %d\n", new->n);
+				new = new->left;
+				bst_insert(&new, value);
 			}
 			else
-				return (binary_tree_insert_left(tmp, value));
+				return (binary_tree_insert_left(new, value));
 		}
 	}
-	return (binary_tree_node(tmp, value));
+	return (binary_tree_node(new, value));
 }
 
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
